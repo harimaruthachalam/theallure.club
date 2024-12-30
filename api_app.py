@@ -22,7 +22,7 @@ async def root(payload: IncomingPayload):
     },
     {
         'role': 'user',
-        'content': 'limit to 50 words',
+        'content': 'limit to 20 words',
     },
     {
         'role': 'user',

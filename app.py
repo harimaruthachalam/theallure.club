@@ -1,6 +1,7 @@
 import os
 from dotenv import *
 from discord import Intents, Client, Message
+import requests
 
 from response import get_response
 
@@ -23,8 +24,16 @@ async def send_message(message, user_message, username):
         user_message = user_message[1:]
 
     try:
-        response = get_response(user_input=user_message)
-        response = f'Hi {username}, thanks for prompt. My response is {response}'
+        payload = {'text' : user_message}
+        headers = {
+            "Content-Type": "application/json"
+        }
+        response = requests.post('http://13.60.173.92:8001/', json=payload, headers=headers)
+        print(response.json()['message'])
+        # response = get_response(user_input=user_message)
+        response = f'Hi {username}, \n \
+**Disclaimer:** I am using ben1t0/tiny-llm:latest (5.7MB model) and my language model is rudimentry.\n\n \
+My response is {response.json()["message"]}'
         await message.author.send(response) if is_private else await message.channel.send(response)
     except Exception as e:
         print(e)
