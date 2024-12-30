@@ -13,7 +13,7 @@ async def root():
 
 @app.post("/")
 async def root(payload: IncomingPayload):
-    return {"message":f"Hello World {payload}"}
+    return {"message":f"Hello World {payload.text}"}
 
 @app.get("/test")
 async def root():
