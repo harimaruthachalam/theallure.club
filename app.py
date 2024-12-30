@@ -12,7 +12,7 @@ intents.message_content = True
 client: Client = Client(intents=intents)
 
 
-async def send_message(message, user_message):
+async def send_message(message, user_message, username):
     if not user_message:
         print('No message')
         return
@@ -24,6 +24,7 @@ async def send_message(message, user_message):
 
     try:
         response = get_response(user_input=user_message)
+        response = f'Hi {username}, thanks for prompt. My response is {response}'
         await message.author.send(response) if is_private else await message.channel.send(response)
     except Exception as e:
         print(e)
@@ -41,7 +42,7 @@ async def on_message(message: Message):
     user_message: str = str(message.content)
     channel: str = str(message.channel)
     print(f'[{channel}] {username}: {user_message}')
-    await send_message(message=message, user_message=user_message)
+    await send_message(message=message, user_message=user_message, username=username)
     
 def main() -> None:
   client.run(token=DISCORD_TOKEN)
