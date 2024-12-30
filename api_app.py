@@ -30,9 +30,9 @@ async def root(payload: IncomingPayload):
     },
     ])
 
-    response['message']['content']
+    
 
-    return {"message":f"{payload.text}"}
+    return {"message":f"{response['message']['content']}"}
 
 @app.get("/test")
 async def root():
