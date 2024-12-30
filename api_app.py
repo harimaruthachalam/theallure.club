@@ -1,6 +1,7 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
-class IncomingPayload:
+class IncomingPayload(BaseModel):
     text: str
 
 
