@@ -1,4 +1,9 @@
+[logo]
 Font: Elika Gorica
 Size: 99.8
 BG: #f9f1ee
 Text: #2b2b2b
+
+[bcard]
+Font: Glacial Indifference
+Size: 10, 7, 8
